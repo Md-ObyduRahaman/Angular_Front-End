@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup | undefined;
   message: string;
+  loading = false;
+  msgShowing=true;
 
   constructor(
     private service: JwtService,
@@ -29,22 +31,27 @@ export class LoginComponent implements OnInit {
 
 
   submitForm() {
+    this.msgShowing=false;
+    this.loading = true;
     this.service.login(this.loginForm.value).subscribe(
       (response) => {
         console.log(response);
         if (response.jwt != null) {
-          alert("Hello, Your token is " + response.jwt);
           const jwtToken = response.jwt;
           localStorage.setItem('jwt', jwtToken);
           this.router.navigateByUrl("/dashboard");
+          this.loading = false;
         }
         else{
           this.router.navigate(['/login']);
+          this.loading = false;
         }
       },
       (err) => {
         // Handle errors here
         this.message =err.error.errorMsg;
+        this.loading = false;
+        this.msgShowing=true;
         console.error('Error.............:', err.error.errorMsg);
       }
     )

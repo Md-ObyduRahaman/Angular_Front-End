@@ -1,6 +1,9 @@
 <div class="container">
     <h2>Login</h2>
-    <div *ngIf="message" class="alert alert-danger">{{ message }}</div>
+    <div *ngIf="message && msgShowing" class="alert alert-danger">{{ message }}</div>
+    <div class="loading-container" *ngIf="loading">
+        <app-loading></app-loading>
+      </div>    
     <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
         <div class="form-group">
             <label for="email">Email</label>
@@ -13,5 +16,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
-    </form>
+  </form>
+    
 </div>

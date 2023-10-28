@@ -66,4 +66,9 @@ button {
 .btn-primary.disabled {
     background-color: #b3d7ff;
     border-color: #b3d7ff;
-}
+}  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Set the container's height to 100% for vertical centering */
+  }

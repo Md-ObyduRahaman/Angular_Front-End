@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtService } from 'src/app/service/jwt.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class DashboardComponent {
   message: string;
 
   constructor(
+    private router: Router,
     private service: JwtService
   ) { }
 
@@ -28,7 +30,7 @@ export class DashboardComponent {
       },
       (error) => {
         // Handle errors here
-        this.message =error.error.errorMsg;
+        this.router.navigate(['/accessDenied']);
         console.error('Error.............:', error.error.errorMsg);
       }
     )

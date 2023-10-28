@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AccessDeniedExceptionComponent } from './components/access-denied-exception/access-denied-exception.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    AccessDeniedExceptionComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
