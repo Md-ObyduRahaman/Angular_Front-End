@@ -11,6 +11,7 @@ import { JwtService } from 'src/app/service/jwt.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup | undefined;
+  message: string;
 
   constructor(
     private service: JwtService,
@@ -40,6 +41,11 @@ export class LoginComponent implements OnInit {
         else{
           this.router.navigate(['/login']);
         }
+      },
+      (err) => {
+        // Handle errors here
+        this.message =err.error.errorMsg;
+        console.error('Error.............:', err.error.errorMsg);
       }
     )
   }

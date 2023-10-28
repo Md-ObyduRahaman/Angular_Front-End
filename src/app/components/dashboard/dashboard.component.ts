@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { JwtService } from 'src/app/service/jwt.service';
 
@@ -21,9 +22,14 @@ export class DashboardComponent {
 
   hello() {
     this.service.hello().subscribe(
-      (response) => {
+      (response: any) => {
         console.log(response);
-        this.message = response.message;
+        this.message = response.data.msg;
+      },
+      (error) => {
+        // Handle errors here
+        this.message =error.error.errorMsg;
+        console.error('Error.............:', error.error.errorMsg);
       }
     )
   }
