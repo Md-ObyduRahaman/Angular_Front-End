@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from './AuthService';
 
 const BASE_URL = ["http://localhost:8090/"]
 
@@ -9,15 +10,14 @@ const BASE_URL = ["http://localhost:8090/"]
 })
 export class JwtService {
 
-  constructor(private http: HttpClient) { }
+  
+
+  constructor(private http: HttpClient,private authService: AuthService) { }
 
   register(signRequest: any): Observable<any> {
     return this.http.post(BASE_URL + 'signup', signRequest)
   }
 
-  login(loginRequest: any): Observable<any> {
-    return this.http.post(BASE_URL + 'login', loginRequest)
-  }
 
   hello(): Observable<any> {
     return this.http.get(BASE_URL + 'api/hello', {
@@ -25,7 +25,7 @@ export class JwtService {
     })
   }
 
-  private  createAuhtorizationHeader() {
+  public  createAuhtorizationHeader() {
     const jwtToken = localStorage.getItem('jwt');
     if (jwtToken) {
       console.log("JWT token found in local storage", jwtToken);
@@ -37,5 +37,12 @@ export class JwtService {
     }
     return null;
   }
+
+ /* public isLoggedIn(): boolean {
+    return !!localStorage.getItem('jwt');
+  }*/
+  
+
+  
 
 }

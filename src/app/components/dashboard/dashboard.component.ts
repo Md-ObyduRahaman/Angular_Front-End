@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Employee } from 'src/app/service/employee';
+import { EmployeeService } from 'src/app/service/employee.service';
 import { JwtService } from 'src/app/service/jwt.service';
 
 @Component({
@@ -10,10 +12,14 @@ import { JwtService } from 'src/app/service/jwt.service';
 })
 export class DashboardComponent {
 
+  public employees: Employee[];
+  public editEmployee: Employee;
+  public deleteEmployee: Employee;
 
   message: string;
 
   constructor(
+    private employeeService: EmployeeService,
     private router: Router,
     private service: JwtService
   ) { }
@@ -35,4 +41,21 @@ export class DashboardComponent {
       }
     )
   }
+
+  public employee(): void {
+    this.employeeService.getEmployees().subscribe(
+      (response: Employee[]) => {
+        this.employees = response;
+        console.log(this.employees);
+        this.router.navigate(['/employee']);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+
+  
 }

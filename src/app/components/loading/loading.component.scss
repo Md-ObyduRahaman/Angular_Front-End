@@ -11,9 +11,3 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  .loading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%; /* Set the container's height to 100% for vertical centering */
-  }
