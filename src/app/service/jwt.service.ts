@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './AuthService';
 
-const BASE_URL = ["http://localhost:8090/"]
+const BASE_URL = ["https://angularback-end-production.up.railway.app/"]
 
 @Injectable({
   providedIn: 'root'

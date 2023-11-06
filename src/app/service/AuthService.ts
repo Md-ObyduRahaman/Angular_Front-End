@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-const BASE_URL = ["http://localhost:8090/"]
+const BASE_URL = ["https://angularback-end-production.up.railway.app/"]
 @Injectable({
   providedIn: 'root',
 })
@@ -25,6 +25,7 @@ export class AuthService {
   }
 
   authenticate(loginRequest: any): Observable<any> {
+   
     return this.http.post(BASE_URL + 'login', loginRequest);
 
   }
@@ -42,7 +43,7 @@ export class AuthService {
           
           
         } else {
-            alert("lll");
+            alert("6666");
            
           // Handle authentication failure (e.g., show an error message)
           // You might want to use a different Subject to emit an error message here.
