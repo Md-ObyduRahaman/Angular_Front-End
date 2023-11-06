@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         }
         else{
-          this.router.navigate(['/login']);
+          this.router.navigate(['/dashboard']);
           this.loading = false;
         }
       },

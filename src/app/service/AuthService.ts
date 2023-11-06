@@ -49,7 +49,7 @@ export class AuthService {
         }
       },
       (error) => {
-        alert("55")
+        alert("Please Check your Back-END Code, Some thing went to wrong."+error.message)
         // Handle HTTP request error (e.g., network issue)
         // You might want to use a different Subject to emit an error message here.
       }
